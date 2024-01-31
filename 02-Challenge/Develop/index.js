@@ -86,7 +86,7 @@ function init() { }
 init();
 
 
-
+console.log('gang gang!!!')
 /*
 1. Write part of app that captures users input
     1.1 Import Inquirer package
