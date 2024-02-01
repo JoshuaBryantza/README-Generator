@@ -2,91 +2,92 @@
 var inquirer = require('inquirer');
 const fs = require('fs');
 
-inquirer
-  .prompt([
-    {
-      type: 'input',
-      message: 'What is your projects ?',
-      name: 'projectTitle',
-    },
-    {
-      type: 'input',
-      message: 'Description',
-      name: 'projectDescription',
-    },
-    {
-      type: 'input',
-      message: 'Installation',
-      name: 'projectInstallation',
-    },
-    {
-      type: 'input',
-      message: 'Instructions',
-      name: 'projectInstructions',
-    },
-    {
-      type: 'input',
-      message: 'Usage Information',
-      name: 'projectUsageInformation',
-    },
-    {
-      type: 'input',
-      message: 'Contribution Guidelines',
-      name: 'projectContributionGuideline',
-    },
-    {
-      type: 'input',
-      message: 'Test Instructions',
-      name: 'projectTestInstructions',
-    }
-  ])
-  .then((answers) => {
-    const readMeMarkDown = `
-    ## project title 
-    ${answers.projectTitle}!
 
-    ## Description 
-    ${answers.projectDescription}
-
-    ## installation 
-    ${answers.projectInstallationInstruction}
-    
-    ## Usage Information 
-    ${answers.projectUsageInformation}
-
-    ## Contribution Guidelines 
-    ${answers.projectContributionGuideline}
-
-    ## Test Instructions 
-    ${answers.projectTestInstructions}
-
-    `;
-
-    fs.writeFile('testRead.md', readMeMarkDown, (err) =>
-      err ? console.error(err) : console.log('Success!')
-    );
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else went wrong
-    }
-  });
 // TODO: Create an array of questions for user input
-const questions = [];
+const questions = [
+  {
+    type: 'input',
+    message: 'What is your projects ?',
+    name: 'projectTitle',
+  },
+  {
+    type: 'input',
+    message: 'Description',
+    name: 'projectDescription',
+  },
+  {
+    type: 'input',
+    message: 'Installation',
+    name: 'projectInstallation',
+  },
+  {
+    type: 'input',
+    message: 'Instructions',
+    name: 'projectInstructions',
+  },
+  {
+    type: 'input',
+    message: 'Usage Information',
+    name: 'projectUsageInformation',
+  },
+  {
+    type: 'input',
+    message: 'Contribution Guidelines',
+    name: 'projectContributionGuideline',
+  },
+  {
+    type: 'input',
+    message: 'Test Instructions',
+    name: 'projectTestInstructions',
+  }
+];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
+function writeToFile(fileName, data) {
+  const readMeMarkDown = `
+  ## project title 
+  ${data.projectTitle}!
+
+  ## Description 
+  ${data.projectDescription}
+
+  ## installation 
+  ${data.projectInstallationInstruction}
+  
+  ## Usage Information 
+  ${data.projectUsageInformation}
+
+  ## Contribution Guidelines 
+  ${data.projectContributionGuideline}
+
+  ## Test Instructions 
+  ${data.projectTestInstructions}
+
+  `;
+  fs.writeFile(fileName, readMeMarkDown, (err) =>
+    err ? console.error(err) : console.log('Success!')
+  );
+}
 
 // TODO: Create a function to initialize app
-function init() { }
+function init() {
+  inquirer
+    .prompt(questions)
+    .then((answers) => writeToFile('READ.md', answers))
+    .catch((error) => {
+      if (error.isTtyError) {
+        // Prompt couldn't be rendered in the current environment
+      } else {
+        // Something else went wrong
+      }
+    });
+}
 
 // Function call to initialize app
 init();
 
 
-console.log('gang gang!!!')
+
 /*
 1. Write part of app that captures users input
     1.1 Import Inquirer package
