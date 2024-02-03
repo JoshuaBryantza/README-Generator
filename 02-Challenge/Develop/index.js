@@ -17,6 +17,11 @@ const questions = [
   },
   {
     type: 'input',
+    message: 'Table of Contents',
+    name: 'projectTableofContents',
+  },
+  {
+    type: 'input',
     message: 'Installation',
     name: 'projectInstallation',
   },
@@ -32,6 +37,11 @@ const questions = [
   },
   {
     type: 'input',
+    message: 'License',
+    name: 'projectLicense',
+  },
+  {
+    type: 'input',
     message: 'Contribution Guidelines',
     name: 'projectContributionGuideline',
   },
@@ -39,6 +49,11 @@ const questions = [
     type: 'input',
     message: 'Test Instructions',
     name: 'projectTestInstructions',
+  },
+  {
+    type: 'input',
+    message: 'Questions',
+    name: 'projectQuestions',
   }
 ];
 
@@ -51,17 +66,26 @@ function writeToFile(fileName, data) {
   ## Description 
   ${data.projectDescription}
 
+  ## Table of Contents 
+  ${data.projectTableofContents}
+
   ## installation 
   ${data.projectInstallationInstruction}
   
   ## Usage Information 
   ${data.projectUsageInformation}
 
+  ## License 
+  ${data.projectLicense}
+
   ## Contribution Guidelines 
   ${data.projectContributionGuideline}
 
   ## Test Instructions 
   ${data.projectTestInstructions}
+
+  ## Questions 
+  ${data.projectQuestions}
 
   `;
   fs.writeFile(fileName, readMeMarkDown, (err) =>
@@ -73,7 +97,7 @@ function writeToFile(fileName, data) {
 function init() {
   inquirer
     .prompt(questions)
-    .then((answers) => writeToFile('READ.md', answers))
+    .then((answers) => writeToFile('README.md', answers))
     .catch((error) => {
       if (error.isTtyError) {
         // Prompt couldn't be rendered in the current environment
