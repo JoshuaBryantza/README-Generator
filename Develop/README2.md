@@ -1,29 +1,29 @@
 
   ## project title 
-  ihdjsogkhj!
+  A README generator!
 
   ## Description 
-  kdhgklh
+  It helps Devs with their readme 
 
   ## Table of Contents 
-  ldhlk
+  none
 
   ## installation 
   undefined
   
   ## Usage Information 
-  lkhjgdlsk
+  Helps Devs generate a professional readme
 
   ## License 
-  lkhdslkg
+  none
 
   ## Contribution Guidelines 
-  dlhfksld'[
+  Feed is welcomed 
 
   ## Test Instructions 
-  ldhkgdsklh
+  none
 
   ## Questions 
-  ljdflsk
+  Anymore question message me on Github 
 
   

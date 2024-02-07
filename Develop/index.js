@@ -97,7 +97,7 @@ function writeToFile(fileName, data) {
 function init() {
   inquirer
     .prompt(questions)
-    .then((answers) => writeToFile('README.md', answers))
+    .then((answers) => writeToFile('README2.md', answers))
     .catch((error) => {
       if (error.isTtyError) {
         // Prompt couldn't be rendered in the current environment
